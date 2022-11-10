@@ -144,8 +144,9 @@ export class MeshViewer extends gfx.GfxApp
     createScene(): void 
     {
         // Setup camera
-        this.camera.setPerspectiveCamera(60, 1920/1080, 0.1, 10)
-        this.cameraControls.setDistance(1.25);
+        this.renderer.viewport = gfx.Viewport.CROP;
+        this.camera.setPerspectiveCamera(60, 1920/1080, 0.1, 10);
+        this.cameraControls.setDistance(2);
         this.cameraControls.zoomSpeed = 0.1;
         this.cameraControls.setOrbit(-30 * Math.PI / 180, 15 * Math.PI / 180);
 
