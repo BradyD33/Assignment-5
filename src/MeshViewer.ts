@@ -74,7 +74,7 @@ export class MeshViewer extends gfx.GfxApp
         this.barkNormalMap = new gfx.Texture('./assets/textures/Bark_007_Normal.jpg');
 
         this.glassTexture = new gfx.Texture('./assets/textures/Glass_Stained_001_basecolor.jpg');
-        this.glassNormalMap = new gfx.Texture('./assets/textures/Glass_Stained_001_Normal.jpg');
+        this.glassNormalMap = new gfx.Texture('./assets/textures/Glass_Stained_001_normal.jpg');
 
         this.pointLight = new gfx.PointLight(gfx.Color.WHITE);
         this.directionalLight = new gfx.DirectionalLight(gfx.Color.WHITE);
