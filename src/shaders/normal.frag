@@ -19,7 +19,7 @@ precision mediump float;
 #define POINT_LIGHT 0
 #define DIRECTIONAL_LIGHT 1
 
-const int MAX_LIGHTS = 16;
+const int MAX_LIGHTS = 8;
 
 uniform int numLights;
 uniform int lightTypes[MAX_LIGHTS];
