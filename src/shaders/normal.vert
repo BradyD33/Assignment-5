@@ -47,21 +47,37 @@ void main()
 
     // Compute the world vertex position
     vec3 worldPosition = (modelMatrix * vec4(position, 1)).xyz;   
-
+    vec3 newTan = (modelMatrix*vec4(tangent,1)).xyz;
+    vec3 newNorm =(modelMatrix * vec4(normal, 1)).xyz;
     // TO BE ADDED
+    //newTan = normalize(newTan-newNorm*dot(newNorm,newTan));
+    newTan = normalize(newTan);
+    newNorm = normalize(newNorm);
+    vec3 bitTan = cross(newNorm, newTan);
+    bitTan = normalize(bitTan);
+
+    //bitTan = normalize(bitTan);
+    
+    
+    //reorthoganalize normal/tan
     // This line of code sets the TBN to an identity matrix.
     // You will need to replace to compute the matrix that
     // converts vertices from world space to tangent space. 
     // When this part is completed correctly, it will produce
     // a result that looks identical to the Phong shader.
     // Then, you can move on to complete the fragment shader.
-    mat3 tbn = mat3(1.0f);
+    //mat3 tbn = 
+    
 
     // Compute the tangent space vertex and view positions
+    //mat3 tbn= mat3(1.0f);
+    //matrix columns [tbl] row major matrices not column major
+    //mat3 tbn = transpose(mat3( tangent, bitTan, normal));
+    mat3 tbn = transpose(mat3(newTan,bitTan,newNorm));
+    // Compute the tangent space light positions
+
     tangentVertPosition = tbn * worldPosition;
     tangentEyePosition = tbn * eyePosition;
-
-    // Compute the tangent space light positions
     for(int i=0; i < numLights; i++)
     {
         tangentLightPositions[i] = tbn * lightPositions[i];
